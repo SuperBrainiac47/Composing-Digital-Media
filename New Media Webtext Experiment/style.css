@@ -1,0 +1,353 @@
+/* ===========================================================
+   NAVAJ NEW MEDIA WEBTEXT EXPERIMENT — palette + shared tokens
+   Pastel palette: light green background, lavender / pale
+   yellow / sky blue accents. Change the hex values here to
+   retune the whole page at once.
+   =========================================================== */
+   :root {
+    --bg: #E9F6E3;        /* light green page background */
+    --panel: #FBFAF7;     /* card / text-block surface */
+    --lavender: #D8C8F0;
+    --yellow: #F7E7A6;
+    --sky: #BFE6F5;
+    --ink: #3A3550;       /* main text color */
+    --dim: #6E6683;       /* secondary text color */
+    --border: #DED7EE;    /* shared hairline border color */
+  }
+  
+  body, html {
+      min-height: 100%;
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      color: var(--ink);
+      background-color: var(--bg);
+    }
+  
+  h1, h2 {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+    }
+  
+  .hero-image {
+  /* This selector controls the "hero image" class. You may need to change "hero.jpg" name/format to match your asset, or vice-versa */
+      background-image: linear-gradient(rgba(58, 53, 80, 0.45), rgba(58, 53, 80, 0.45)), url("hero.jpg");
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+  
+  /* This selector places text in the middle of the image */
+  .hero-text {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+  .hero-text h1 {
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 3.2em;
+      color: white;
+    }
+  
+  .hero-text h2 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 400;
+      font-size: 1.3em;
+      color: var(--sky);
+    }
+  
+  
+   /* text-block: soft rounded card, cohesive with the rest of the palette */
+  .text-block {
+      display: block;
+      width: 55%;
+      background-color: var(--panel);
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      margin-top: 80px;
+      margin-bottom: 80px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: inherit;
+      font-size: 1.15em;
+      line-height: 1.6;
+      color: inherit;
+    }
+  
+    @media screen and (max-width: 800px) {
+      .text-block {
+          display: block;
+          width: 88%;
+          background-color: var(--panel);
+          padding: 28px;
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          margin-top: 60px;
+          margin-bottom: 60px;
+          margin-left: auto;
+          margin-right: auto;
+          font-family: inherit;
+          font-size: 1.05em;
+          color: inherit;
+      }
+    }
+  
+  
+   /* pull-quote: pale yellow panel with sky-blue rules top/bottom */
+  .pull-quote {
+      display: block;
+      width: 65%;
+      background-color: var(--yellow);
+      padding: 32px 24px;
+      border-top: 3px solid var(--sky);
+      border-bottom: 3px solid var(--sky);
+      border-radius: 12px;
+      margin-top: 80px;
+      margin-bottom: 80px;
+      margin-left: auto;
+      margin-right: auto;
+      font: inherit;
+      color: var(--ink);
+    }
+  
+  .pull-quote h2 {
+      font-size: 1.4em;
+      margin: 0;
+    }
+  
+  
+  ul {
+      list-style-type: default;
+      font: inherit;
+      font-size: 1em;
+      line-height: 2.2;
+      color: inherit;
+    }
+  
+  ol {
+      list-style-type: default;
+      font: inherit;
+      font-size: 1em;
+      line-height: 2.2;
+      color: inherit;
+    }
+  
+  
+  /* button: sky blue, lavender on hover */
+  .button-box {
+      display: flex;
+      height: 180px;
+      align-items: center;
+      justify-content: center;
+    }
+  
+  .button {
+      display: inline-block;
+      background-color: var(--sky);
+      padding: 15px 32px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      text-align: center;
+      transition: background-color 160ms ease;
+    }
+  
+  .button:hover {
+      background-color: var(--lavender);
+    }
+  
+  
+  /* flexbox layout kept for reference / future sections */
+  .flexbox-container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+   }
+  
+  .row {
+     display: flex;
+     flex-wrap: wrap;
+     padding: 0 4px;
+     justify-content: center;
+   }
+  
+  .column {
+     flex: 25%;
+     max-width: 25%;
+     padding: 0 4px;
+   }
+  
+  .column img  {
+     margin-top: 8px;
+     vertical-align: middle;
+     width: 100%;
+     border-radius: 12px;
+   }
+  
+   @media screen and (max-width: 800px) {
+  .column {
+         flex: 75%;
+         max-width: 75%;
+     }
+   }
+  
+  
+  /* scattered gallery — the "no center" image collage, each image gets a
+     random tilt applied in the <script> at the bottom of index.html */
+  .scatter-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 28px;
+      padding: 70px 24px 20px;
+    }
+  
+  .scatter-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 5px solid var(--lavender);
+      box-shadow: 0 8px 18px rgba(58, 53, 80, 0.18);
+      transition: transform 250ms ease;
+    }
+  
+    @media screen and (max-width: 800px) {
+      .scatter-img {
+          width: 120px;
+          height: 120px;
+      }
+    }
+  
+  
+  /* image frame + filter, kept for reference */
+  .frame {
+      display: block;
+      padding: 5px;
+      border: 5px solid var(--sky);
+      border-radius: 12px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  
+  /* polaroid: soft card, cohesive shadow tint */
+  .polaroid {
+      display: block;
+      width: 45%;
+      background-color: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 6px 16px rgba(58, 53, 80, 0.18);
+      margin-top: 80px;
+      margin-bottom: 80px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+  .polaroid img {
+      width: 100%;
+      border-radius: 2px 2px 0 0;
+    }
+  
+  .image-container {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .image-container img {
+    width: 100%;
+    border-radius: 16px;
+  }
+  
+  .image-container-text {
+    position: absolute;
+    max-width: 300px;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(58, 53, 80, .55);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  
+  /* parallax window */
+  .parallax {
+      background-image: url("parallax.jpg");
+      height: 400px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      border-radius: 0;
+    }
+  
+    @media screen and (max-width: 768px) {
+      .parallax {
+          background-attachment: inherit;
+          height: 320px;
+      }
+    }
+  
+  
+  .caption {
+      display: block;
+      padding: 14px 20px 0;
+      text-align: center;
+      color: var(--dim);
+    }
+  
+  /* section-unit: wraps a section + its caption together so the
+     no-center shuffle script moves them as one piece */
+  .section-unit {
+      margin-top: 0;
+      margin-bottom: 80px;
+    }
+  
+  
+  .logo {
+      display: block;
+      padding: 10px;
+      margin-top: 100px;
+      margin-bottom: 0px;
+      font: inherit;
+      font-size: 12pt;
+      text-align: center;
+      color: var(--dim);
+    }
+  
+  .logo a {
+      color: var(--ink);
+    }
+  
+  
+  .footer {
+      padding: 10px;
+      margin: auto;
+      font: inherit;
+      font-size: inherit;
+      text-align: center;
+      color: var(--dim);
+    }
