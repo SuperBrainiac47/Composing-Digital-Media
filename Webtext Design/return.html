@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navaj Webtext Design</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="reef">
+<main class="page">
+  <span class="eyebrow"><span class="bubble"></span>the reef · part four</span>
+  <h1>You're back in the maze. Nothing here has changed size.</h1>
+  <p>You try to explain it, the drop-off, the whale, the terrors, and the vastness. You reach for words the reef never needed before, never created before. Try telling one of them.</p>
+
+  <div class="rejected-links">
+    <div class="rejected-link" onclick="reject(this, 'guppy-msg')">Tell the school of guppies <span class="rejected-msg" id="guppy-msg"></span></div>
+    <div class="rejected-link" onclick="reject(this, 'coral-msg')">Tell whoever's in the coral maze <span class="rejected-msg" id="coral-msg"></span></div>
+    <div class="rejected-link" onclick="reject(this, 'shrimp-msg')">Tell the cleaner shrimp <span class="rejected-msg" id="shrimp-msg"></span></div>
+  </div>
+
+  <p style="font-size:13px;">This isn't broken. It's the point, the reef and its inhabitants have no ability to fathom what you discovered.</p>
+
+  <div class="btn-row">
+    <a href="index.html" class="btn btn-back">Live in the reef again</a>
+    <a href="the-deep.html" class="btn btn-deep">Go back out to the open ocean</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <span class="title">Navaj Webtext Design Project</span>
+  <span class="fish-icon">🐠</span>
+  <span class="sub">inspired by Plato's Allegory of the Cave</span>
+</footer>
+
+<script>
+  const responses = [
+    "\u201cA fish bigger than the whole reef? Sure it is.\u201d",
+    "\u201cYou went out past the coral and now you're strange.\u201d",
+    "\u201cWe're all fine in here. Come back to the school.\u201d"
+  ];
+  function reject(el, msgId) {
+    document.getElementById(msgId).textContent = responses[Math.floor(Math.random() * responses.length)];
+  }
+</script>
+</body>
+</html>

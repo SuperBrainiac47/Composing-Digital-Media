@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Nunito+Sans:wght@400;600&display=swap');
+
+:root {
+  --reef-bg: #ddf4ee;
+  --reef-surface: #bfeae0;
+  --reef-surface-2: #a7ded1;
+  --reef-accent: #1c8c74;
+  --reef-accent-dim: #5aa895;
+  --reef-ink: #0b3d42;
+  --reef-ink-dim: #3e6b68;
+
+  --deep-bg: #06131f;
+  --deep-surface: #0f2438;
+  --deep-surface-2: #163351;
+  --deep-glow: #4fe0c6;
+  --deep-glow-dim: #2f7f74;
+  --deep-foam: #e8f6fb;
+  --deep-foam-dim: #8fb4c4;
+
+  --sky: #2f8fd1;
+  --sky-dim: #6fb3dc;
+
+  --home-bg: #faf6ee;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.7;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5em;
+  line-height: 1.2;
+}
+
+a { text-decoration: none; }
+p { margin: 0 0 1.2em; }
+
+.page {
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 12vh 24px 4vh;
+  flex: 1;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5em;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* button variants, used across themes */
+.btn-back { border-color: var(--sky-dim); color: var(--sky); }
+.btn-back:hover { background: rgba(47,143,209,0.1); border-color: var(--sky); }
+
+.btn-deep {
+  background: var(--deep-bg);
+  border-color: var(--deep-glow-dim);
+  color: var(--deep-glow);
+}
+.btn-deep:hover { background: var(--deep-surface); border-color: var(--deep-glow); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* footer, on every page */
+.site-footer {
+  flex-shrink: 0;
+  padding: 0.7em 24px;
+  border-top: 1px solid rgba(11,61,66,0.1);
+  font-size: 10px;
+  text-align: center;
+  opacity: 0.55;
+}
+.deep .site-footer { border-top-color: rgba(232,246,251,0.1); }
+.site-footer .fish-icon { margin-right: 5px; }
+.site-footer .title { font-weight: 600; }
+.site-footer .sub { margin-left: 5px; font-style: italic; }
+
+/* ---------- Reef theme (the known world) ---------- */
+body.reef { background: var(--reef-bg); color: var(--reef-ink); }
+body.home { background: var(--home-bg); }
+.reef .eyebrow { color: var(--reef-accent-dim); }
+.reef h1, .reef h2 { color: var(--reef-ink); }
+.reef p { color: var(--reef-ink-dim); }
+.reef .btn { background: transparent; border-color: var(--reef-accent-dim); color: var(--reef-accent); }
+.reef .btn:hover { background: var(--reef-surface); border-color: var(--reef-accent); }
+
+.reef-links { display: flex; flex-direction: column; gap: 14px; margin: 2em 0; }
+.reef-link {
+  display: block;
+  padding: 18px 20px;
+  background: var(--reef-surface);
+  border: 1px solid var(--reef-surface-2);
+  border-radius: 12px;
+  color: var(--reef-ink-dim);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.reef-link:hover { background: var(--reef-surface-2); border-color: var(--reef-accent); }
+.reef-link span.label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--reef-ink);
+  display: block;
+}
+.reef-link span.sub { font-size: 13px; opacity: 0.8; }
+
+/* small bubble marker before the flame-equivalent eyebrow */
+.bubble {
+  width: 8px; height: 8px;
+  background: var(--reef-accent);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: 1px;
+  animation: rise 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .bubble { animation: none; } }
+@keyframes rise {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* the visible, clearly-labeled way out */
+.exit-link {
+  display: inline-block;
+  margin-top: 3em;
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 999px;
+  color: var(--reef-accent);
+  background: rgba(28,140,116,0.08);
+  border: 1px dashed var(--reef-accent-dim);
+  transition: background 0.25s ease, border-style 0.25s ease;
+}
+.exit-link:hover { background: rgba(28,140,116,0.16); border-style: solid; }
+
+/* ---------- Open water: animated transition ---------- */
+body.open-water {
+  background: var(--reef-bg);
+  color: var(--reef-ink);
+  animation: descend 5s ease-in forwards;
+}
+@keyframes descend {
+  0% { background: var(--reef-bg); color: var(--reef-ink); }
+  100% { background: var(--deep-bg); color: var(--deep-foam); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.open-water { animation: none; background: var(--deep-bg); color: var(--deep-foam); }
+}
+.open-water .page { text-align: center; }
+.open-water .btn {
+  background: transparent;
+  border-color: var(--deep-glow-dim);
+  color: var(--deep-glow);
+  opacity: 0;
+  animation: reveal 1.2s ease forwards 3.6s;
+}
+@media (prefers-reduced-motion: reduce) { .open-water .btn { opacity: 1; animation: none; } }
+.open-water .btn-back { border-color: var(--sky-dim); color: var(--sky); }
+@keyframes reveal { to { opacity: 1; } }
+
+.depth-line {
+  width: 1px;
+  height: 90px;
+  background: linear-gradient(to bottom, var(--reef-accent-dim), var(--deep-glow-dim));
+  margin: 0 auto 2em;
+}
+
+/* ---------- The deep (truth) ---------- */
+body.deep { background: var(--deep-bg); color: var(--deep-foam); }
+.deep .page { max-width: 680px; }
+.deep .eyebrow { color: var(--deep-glow-dim); }
+.deep h1, .deep h2 { color: var(--deep-foam); }
+.deep p { color: var(--deep-foam-dim); }
+.deep .btn { background: transparent; border-color: var(--deep-glow-dim); color: var(--deep-glow); }
+.deep .btn:hover { background: rgba(79,224,198,0.1); border-color: var(--deep-glow); }
+
+.creature-row { display: flex; flex-direction: column; gap: 12px; margin: 2em 0; }
+.creature {
+  padding: 14px 18px;
+  background: var(--deep-surface);
+  border: 1px solid var(--deep-surface-2);
+  border-radius: 12px;
+}
+.creature .label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--deep-foam); }
+.creature .sub { font-size: 13px; color: var(--deep-foam-dim); }
+
+/* ---------- Return page (back to reef, disbelief) ---------- */
+.rejected-links { display: flex; flex-direction: column; gap: 14px; margin: 2em 0; }
+.rejected-link {
+  display: block;
+  padding: 18px 20px;
+  background: var(--reef-surface);
+  border: 1px solid var(--reef-accent-dim);
+  border-radius: 12px;
+  color: var(--reef-ink-dim);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.rejected-link:hover { opacity: 0.75; }
+.rejected-msg {
+  display: block;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--reef-accent);
+  margin-top: 6px;
+  min-height: 1.4em;
+}
